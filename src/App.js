@@ -73,8 +73,10 @@ function DropDown() {
     <div className="dropdown">
       <div className="menu">
         <DropDownItem iconRight={<Icons.FaArrowRight />}>
-          My Profile
+          Mon Profile
         </DropDownItem>
+        <DropDownItem iconRight={<Icons.FaArrowRight />}>Settings</DropDownItem>
+        <DropDownItem iconRight={<Icons.FaArrowRight />}>Animals</DropDownItem>
       </div>
     </div>
   );
