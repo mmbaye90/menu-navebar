@@ -5,11 +5,21 @@ import * as Icons from "react-icons/fa";
 function App() {
   return (
     <div className="App">
-      <Icons.FaPlus />
-      <Icons.FaBell />
-      <Icons.FaFacebookMessenger />
-      <Icons.FaArrowDown />
+      <Navbar>
+        <Icons.FaPlus />
+        <Icons.FaBell />
+        <Icons.FaFacebookMessenger />
+        <Icons.FaArrowDown />
+      </Navbar>
     </div>
+  );
+}
+
+function Navbar(props) {
+  return (
+    <nav>
+      <ul>{props.children}</ul>
+    </nav>
   );
 }
 
