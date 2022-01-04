@@ -2,6 +2,7 @@ import "./App.css";
 import { CSSTransition } from "react-transition-group";
 import * as Icons from "react-icons/fa";
 import { useState } from "react";
+import { icons } from "react-icons/lib";
 
 function App() {
   return (
@@ -11,8 +12,11 @@ function App() {
         <NavItem icon={<Icons.FaBell />} />
         <NavItem icon={<Icons.FaFacebookMessenger />} />
 
-        {/* Affichage de la fonction DropDown au clic de cet élément */}
-        <NavItem icon={<Icons.FaArrowDown />}>{/* <DropDownItem/> */}</NavItem>
+        {/* Affiche DropDown uniquement au click de cet élément et pas sur les autres */}
+
+        <NavItem icon={<Icons.FaArrowDown />}>
+          <DropDown />
+        </NavItem>
       </Navbar>
     </div>
   );
@@ -44,6 +48,35 @@ function NavItem({ icon, children }) {
       </a>
       {open && children}
     </li>
+  );
+}
+
+//Création de la fonction DropDown qui aura une autre fonction à l'intérieur pour la geston de son affichage
+
+function DropDown() {
+  //Initialisation du state pour naviguer entre les différentes menu à travers la CSSTransition et je l'initialise à "main" par defaut
+  const [goToMenu, setgoToMenu] = useState("main");
+
+  //Création de la fonction d'affichage de DropDownItem
+  function DropDownItem({ iconLeft, children, iconRight }) {
+    return (
+      <a href="" className="menu-item">
+        <span className="icon-button">{iconLeft}</span>
+        {children}
+        <span className="icon-right">{iconRight}</span>
+      </a>
+    );
+  }
+
+  //Utilisation de DropDownItem pour le render de la fonction parente DropDown/Utilisation de la fonction comme une balise
+  return (
+    <div className="dropdown">
+      <div className="menu">
+        <DropDownItem iconRight={<Icons.FaArrowRight />}>
+          My Profile
+        </DropDownItem>
+      </div>
+    </div>
   );
 }
 export default App;
