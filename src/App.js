@@ -21,8 +21,8 @@ function App() {
 //Création de la function navbar pour afficher et englober les autres fonctions
 function Navbar(props) {
   return (
-    <nav>
-      <ul>{props.children}</ul>
+    <nav className="navbar">
+      <ul className="navbar-nav">{props.children}</ul>
     </nav>
   );
 }
@@ -38,11 +38,11 @@ function NavItem({ icon, children }) {
   return (
     //J'initialise un evenement de type Click sur l'élément du a
 
-    <li>
-      <a href="#" onClick={() => setOpen(!open)}>
+    <li className="nav-item">
+      <a href="#" onClick={() => setOpen(!open)} className="icon-button">
         {icon}
       </a>
-      {open && console.log("yes")}
+      {open && children}
     </li>
   );
 }
