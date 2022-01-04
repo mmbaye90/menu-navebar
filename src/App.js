@@ -55,12 +55,17 @@ function NavItem({ icon, children }) {
 
 function DropDown() {
   //Initialisation du state pour naviguer entre les différentes menu à travers la CSSTransition et je l'initialise à "main" par defaut
-  const [goToMenu, setgoToMenu] = useState("main");
+  const [activeMenu, setActiveMenu] = useState("main");
 
   //Création de la fonction d'affichage de DropDownItem
-  function DropDownItem({ iconLeft, children, iconRight }) {
+  function DropDownItem({ iconLeft, children, iconRight, goToMenu }) {
     return (
-      <a href="" className="menu-item">
+      //Je définis l'évenement sur l'item
+      <a
+        href=""
+        className="menu-item"
+        onClick={() => goToMenu && setActiveMenu({ goToMenu })}
+      >
         <span className="icon-button">{iconLeft}</span>
         {children}
         <span className="icon-right">{iconRight}</span>
@@ -71,6 +76,7 @@ function DropDown() {
   //Utilisation de DropDownItem pour le render de la fonction parente DropDown/Utilisation de la fonction comme une balise
   return (
     <div className="dropdown">
+      {/* Utilisation de CSSTransition qui permet de naviguer entre les menu au click  */}
       <div className="menu">
         <DropDownItem iconRight={<Icons.FaArrowRight />}>
           Mon Profile
@@ -78,6 +84,7 @@ function DropDown() {
         <DropDownItem
           iconRight={<Icons.FaArrowRight />}
           iconLeft={<Icons.FaCog />}
+          goToMenu="settings"
         >
           Settings
         </DropDownItem>
