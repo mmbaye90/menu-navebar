@@ -1,8 +1,7 @@
-import "./App.css";
+import "./styles/index.css";
 import { CSSTransition } from "react-transition-group";
 import * as Icons from "react-icons/fa";
 import { useState } from "react";
-import { icons } from "react-icons/lib";
 
 function App() {
   return (
@@ -62,9 +61,9 @@ function DropDown() {
     return (
       //Je définis l'évenement sur l'item
       <a
-        href=""
+        href="#"
         className="menu-item"
-        onClick={() => goToMenu && setActiveMenu({ goToMenu })}
+        onClick={() => goToMenu && setActiveMenu(goToMenu)}
       >
         <span className="icon-button">{iconLeft}</span>
         {children}
@@ -76,22 +75,29 @@ function DropDown() {
   //Utilisation de DropDownItem pour le render de la fonction parente DropDown/Utilisation de la fonction comme une balise
   return (
     <div className="dropdown">
-      {/* Utilisation de CSSTransition qui permet de naviguer entre les menu au click  */}
-      <div className="menu">
-        <DropDownItem iconRight={<Icons.FaArrowRight />}>
-          Mon Profile
-        </DropDownItem>
-        <DropDownItem
-          iconRight={<Icons.FaArrowRight />}
-          iconLeft={<Icons.FaCog />}
-          goToMenu="settings"
-        >
-          Settings
-        </DropDownItem>
-        <DropDownItem iconRight={<Icons.FaArrowRight />} iconLeft="🦧">
-          Animals
-        </DropDownItem>
-      </div>
+      <CSSTransition
+        in={activeMenu === "main"}
+        timeout={500}
+        classNames="menu-primary"
+        unmountOnExit
+      >
+        <div className="menu">
+          <DropDownItem iconRight={<Icons.FaArrowRight />}>
+            Mon Profile
+          </DropDownItem>
+          <DropDownItem
+            iconRight={<Icons.FaArrowRight />}
+            iconLeft={<Icons.FaCog />}
+            // En cliquant sur settings j'irais au menu settings grace trois parms:la var goToMenu/CSSTRansition/Le state:activeMenu
+            goToMenu="settings"
+          >
+            Settings
+          </DropDownItem>
+          <DropDownItem iconRight={<Icons.FaArrowRight />} iconLeft="🦧">
+            Animals
+          </DropDownItem>
+        </div>
+      </CSSTransition>
     </div>
   );
 }
