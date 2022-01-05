@@ -98,6 +98,26 @@ function DropDown() {
           </DropDownItem>
         </div>
       </CSSTransition>
+
+      {/* Menu Settings       */}
+      <CSSTransition
+        in={activeMenu === "settings"}
+        timeout={500}
+        classNames="menu-secondary"
+        unmountOnExit
+      >
+        <div className="menu">
+          <DropDownItem iconLeft={<Icons.FaArrowLeft />} goToMenu="main">
+            <h2>Mes compétences</h2>
+          </DropDownItem>
+          <DropDownItem iconLeft={<Icons.FaBolt />}>HTML5</DropDownItem>
+          <DropDownItem iconLeft={<Icons.FaBolt />}>CSS3</DropDownItem>
+          <DropDownItem iconLeft={<Icons.FaBolt />}>JS</DropDownItem>
+          <DropDownItem iconLeft={<Icons.FaBolt />}>
+            <a href="https://deploiementreactv5.vercel.app/">ReactJS</a>
+          </DropDownItem>
+        </div>
+      </CSSTransition>
     </div>
   );
 }
