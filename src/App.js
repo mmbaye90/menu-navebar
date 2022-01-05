@@ -17,6 +17,9 @@ function App() {
           <DropDown />
         </NavItem>
       </Navbar>
+      <h1 style={{ color: "white", textAlign: "center" }}>
+        Moiiiiiiiiiiiiiiiii
+      </h1>
     </div>
   );
 }
@@ -113,9 +116,27 @@ function DropDown() {
           <DropDownItem iconLeft={<Icons.FaBolt />}>HTML5</DropDownItem>
           <DropDownItem iconLeft={<Icons.FaBolt />}>CSS3</DropDownItem>
           <DropDownItem iconLeft={<Icons.FaBolt />}>JS</DropDownItem>
-          <DropDownItem iconLeft={<Icons.FaBolt />}>
+          <DropDownItem iconLeft={<Icons.FaReact />}>
             <a href="https://deploiementreactv5.vercel.app/">ReactJS</a>
           </DropDownItem>
+        </div>
+      </CSSTransition>
+
+      {/* Ajout Menu Animals */}
+      <CSSTransition
+        in={activeMenu === "animals"}
+        timeout={500}
+        classNames="menu-secondary"
+        unmountOnExit
+      >
+        <div className="menu">
+          <DropDownItem goToMenu="main" iconLeft={<Icons.FaArrowLeft />}>
+            <h2>Animals</h2>
+          </DropDownItem>
+          <DropDownItem leftIcon="🦘">Kangaroo</DropDownItem>
+          <DropDownItem leftIcon="🐸">Frog</DropDownItem>
+          <DropDownItem leftIcon="🦋">Horse?</DropDownItem>
+          <DropDownItem leftIcon="🦔">Hedgehog</DropDownItem>
         </div>
       </CSSTransition>
     </div>
